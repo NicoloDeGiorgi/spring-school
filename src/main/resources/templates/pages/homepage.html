@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html xmlns:th="http//www.thymeleaf.org">
+	<head th:insert ="~{fragments/fragments :: head}">
+	</head>
+	<body>
+		<header th:insert="~{fragments/navbar :: navbar('home')}"></header>
+		
+		<main class="container">
+			<div class="row">
+				<h1>
+					HomePage
+				</h1>
+			</div>
+		</main>
+		
+		
+		
+		<div class="row mt-4">
+
+		    <div class="col-md-4">
+		        <div class="card">
+		           <img th:src="@{/img/img.school.png}" class="card-img-top" alt="Foto 1">
+		            <div class="card-body">
+		                <h5 class="card-title">I NOSTRI ISTITUTI</h5>
+		                <p class="card-text">
+		                    Le nostre strutture scolastiche sono progettate per garantire elevati standard di qualità, sicurezza e funzionalità,
+							offrendo ambienti moderni e adeguati alle esigenze formative.
+		                </p>
+		            </div>
+		        </div>
+		    </div>
+
+		    <div class="col-md-4">
+		        <div class="card">
+		            <img th:src="@{/img/img.school2.png}" class="card-img-top" alt="Foto 2">
+		            <div class="card-body">
+		                <h5 class="card-title">DIVENTA UN NOSTRO STUDENTE</h5>
+		                <p class="card-text">
+		                    Studenti provenienti da tutto il mondo, pronti a entrare a far parte di una grande famiglia collaborativa,
+							fondata sul rispetto, sulla condivisione e sulla crescita reciproca.
+		                </p>
+		            </div>
+		        </div>
+		    </div>
+
+		    <div class="col-md-4">
+		        <div class="card">
+		            <img th:src="@{/img/img.school3.png}" class="card-img-top" alt="Foto 3">
+		            <div class="card-body">
+		                <h5 class="card-title">I NOSTRI CORSI GRATUITI</h5>
+		                <p class="card-text">
+		                   Durante l’anno proponiamo corsi di musica, teatro, atletica e molte altre attività,
+						   per arricchire l’esperienza formativa dei nostri studenti.
+		                </p>
+		            </div>
+		        </div>
+		    </div>
+
+		</div>
+
+		
+		
+		
+		
+		<footer th:replace="~{fragments/fragments :: footer}"></footer>
+		<th:block th:replace="~{fragments/fragments :: scripts}"></th:block>
+	</body>
+</html>

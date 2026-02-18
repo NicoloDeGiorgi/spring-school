@@ -1,0 +1,78 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head th:insert="~{fragments/fragments :: head}">
+</head>
+
+<body>
+	<header th:insert="~{fragments/navbar :: navbar('students')}"></header>
+
+	<main class="container">
+		<div class="row">
+			<div class="col-12">
+
+
+				<h1 class="py-4 mb-2 text-center">
+					DETTAGLIO STUDENTE
+				</h1>
+				<div class="card py- mb-2 ">
+					<h4 class="card-header text-danger">
+						ID Studente : [[ *{id} ]]
+					</h4>
+
+
+
+					<div class="card-body">
+
+						<p class="card-text"><strong>Nome : </strong><span th:text="${student.name}"></span></p>
+						<p class="card-text"><strong>ETA : </strong><span th:text="${student.eta}"></span></p>
+						<p class="card-text" th:each"book : *{books}"><strong></strong>
+							<span th:text="*{title}"></span>
+						</p>
+						<div class="mb-3">
+							<div class="text-decoration-underline fw-bold fst-italic">
+								Libri Assegnati:
+							</div>
+							<li th:each="note: *{book}">
+								
+								<p class="fw-light">Titolo : [[${book.title}]] </p>
+								<p class="fw-light">Genere : [[${book.genere}]] </p>
+								
+															
+														</li>
+													</ul>
+													
+
+								<!-- 
+							
+				<div class="card w-100">
+							<div class="card-body">
+									<p th:text="'ID: ' + ${student.id}"></p>
+									<p th:text="'NOME: ' + ${student.name}"></p>
+									<p th:text="'ETA: ' + ${student.eta}"></p>
+						
+						</div>
+				   
+				
+				
+				
+				
+			 -->
+								<a th:href="@{/students}"
+									style="display:inline-block;  text-align: center; margin-top:20px; padding:10px 15px; background-color:rgb(255, 0, 0); color:white; text-decoration:none; border-radius:5px;">
+									Torna indietro
+								</a>
+
+						</div>
+					</div>
+	</main>
+
+	<footer th:replace="~{fragments/fragments :: footer}"></footer>
+	<th:block th:replace="~{fragments/fragments :: scripts}"></th:block>
+</body>
+
+</html>
+
+</body>
+
+</html>

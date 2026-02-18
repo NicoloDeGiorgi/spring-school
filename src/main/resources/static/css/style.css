@@ -1,0 +1,4 @@
+.card-img-top {
+    height: 500px;      /* prova 140–180 */
+    object-fit: cover;
+}

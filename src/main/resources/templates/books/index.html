@@ -1,0 +1,59 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head th:insert="~{fragments/fragments :: head}">
+</head>
+
+<body>
+	<header th:insert="~{fragments/navbar :: navbar('books')}"></header>
+
+	<main class="container">
+		<div class="row">
+			<div class="col-12">
+
+				<th:block th:if="${books.size() > 0} ">
+					<h1 class="py-4 mb-2 text-center">
+						LISTA DEI LIBRI
+					</h1>
+
+					<!-- <a th:href="@{/books/create}" class="btn btn-primary">
+						Crea un nuovo book
+					</a> -->
+					<table class="table table-striped table-hover">
+						<thead>
+							<tr>
+								<th>#</th>
+								<th>TITOLO</th>
+								<th>GENERE</th>
+
+
+							</tr>
+						</thead>
+						<tbody>
+						<tr th:each="book : ${books}" class="align-middle">
+						    <td th:text="${book.id}"></td>
+						    <td th:text="${book.title}"></td>
+						    <td th:text="${book.genere}"></td>
+
+				
+							<ul>
+								<li th:each="err : ${#fields.allErrors()}" th:text="${err}">
+							</ul>
+						</tbody>
+					</table>
+				</th:block>
+				<th:block th:unless="${books.size() > 0}">
+					<h3 calss="py-5 text-center">
+						No book are available this time...
+					</h3>
+				</th:block>
+
+			</div>
+		</div>
+	</main>
+
+	<footer th:replace="~{fragments/fragments :: footer}"></footer>
+	<th:block th:replace="~{fragments/fragments :: scripts}"></th:block>
+</body>
+
+</html>

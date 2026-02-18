@@ -1,0 +1,59 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head th:insert="~{fragments/fragments :: head}"></head>
+
+<body>
+<header th:insert="~{fragments/navbar :: navbar('students/create')}"></header>
+
+<main class="container">
+    <div class="row">
+        <div class="col-12">
+
+           
+
+            <form th:object="${student}"
+                  th:action="@{/students/create}"
+                  method="post">
+
+                <!-- Errori -->
+                <th:block th:if="${#fields.hasErrors()}">
+                    <ul class="alert alert-danger">
+                        <li th:each="err : ${#fields.allErrors()}"
+                            th:text="${err}"></li>
+                    </ul>
+                </th:block>
+
+                <div class="mb-3">
+                    <label class="form-label"><strong>Name:</strong></label>
+                    <input type="text"
+                           class="form-control"
+                           placeholder="Inserisci il nome..."
+                           th:field="*{name}">
+                </div>
+
+                <div class="mb-3">
+                    <label class="form-label"><strong>Età:</strong></label>
+                    <input type="number"
+                           class="form-control"
+                           placeholder="Inserisci l'età..."
+                           th:field="*{eta}">
+                </div>
+
+                <div class="mb-3">
+                    <input type="submit" class="btn btn-success" value="Create new student">
+                    <input type="reset" class="btn btn-danger" value="Reset fields">
+                    <a th:href="@{/students}" class="btn btn-primary">Torna indietro</a>
+                </div>
+
+            </form>
+
+        </div>
+    </div>
+</main>
+
+<footer th:replace="~{fragments/fragments :: footer}"></footer>
+<th:block th:replace="~{fragments/fragments :: scripts}"></th:block>
+
+</body>
+</html>

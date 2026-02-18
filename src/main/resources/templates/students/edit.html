@@ -1,0 +1,58 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:insert="~{fragments/fragments :: head}"> 
+</head>
+<body>
+<header th:insert="~{fragments/navbar :: navbar('create')}"></header>
+
+<main class="container">
+    <div class="row justify-content-center">
+		<div class="col-12">
+			
+			<h1 class="py-4 mb-2 text-center">
+				MODIFICA: "[[${student.name}]]"
+			</h1>
+			
+			<form 
+			id="student form"
+			th:object="${student}"
+			th:action="@{/students/edit/{id}(id=${student.id})}"
+			method="post">
+			<!--per ogni errore scrivilo-->
+			<th:block th:if="${#fields.hasErrors()}">
+				<div class="ps-3">
+			<ul class="alert alert-danger">	
+				<li 
+				th:each="err : ${#fields.allErrors()}" 
+				th:text="${err}">
+				</li>
+			</ul>
+			</div>
+			</th:block>
+			
+			<div class="mb-3">
+			<label for="name" class="form-label"><strong>Nome: </strong></label>
+			<input type="text" class="form-control" id="name" placeholder="Inserisci un titolo.." th:field="*{name}" >
+			</div>
+			<div class="mb-3">
+				<label for="eta" class="form-label"><strong>Eta: </strong></label>
+				<input type="text" class="form-control" id="eta" placeholder="Inserisci i dettagli.." th:field="*{eta}">
+			</div>
+			
+	
+			<div class="mb-3 ">
+				<input type="submit" class="btn btn-primary btn-success" value="CONFERMA">
+				<input type="reset" class="btn btn-primary  btn-danger" value="RESETTA I CAMPI">
+				<a th:href="@{/students}" class="btn btn-primary">TORNA INDIETRO</a>
+			</div>
+			</div>
+			</form>
+</main>
+
+<footer th:replace="~{fragments/fragments :: footer}"></footer>
+<th:block th:replace="~{fragments/fragments :: scripts}"></th:block>
+</body>
+</html>
+
+</body>
+</html>
